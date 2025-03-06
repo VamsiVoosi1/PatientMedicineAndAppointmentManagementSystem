@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Appointment Booking</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <style>
+    body {
+        background: linear-gradient(to right, #a8e0f1, #f1c6d8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        backdrop-filter: blur(10px);
+    }
+
+    .appointment-container {
+        display: flex;
+        width: 900px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(15px);
+        overflow: hidden;
+    }
+
+    .appointment-image {
+        width: 50%;
+        background: url('/appointmentbook.jpg') no-repeat center center/cover;
+        opacity: 0.4;
+    }
+
+    .appointment-form {
+        width: 50%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .appointment-form h2 {
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+
+    .form-label {
+        font-weight: bold;
+        text-align: left;
+        display: block;
+        margin-bottom: 0px;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        padding: 6px;
+        font-size: 12px;
+        height: 32px;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: bold;
+        background: linear-gradient(135deg, #66b3ff, #3385ff);
+        border: none;
+        color: black;
+    }
+
+    .btn-primary:hover {
+        transform: scale(1.05);
+    }
+    .btn-back {
+        margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .appointment-container {
+            flex-direction: column;
+        }
+        .appointment-image {
+            width: 50%;
+            height: 200px;
+        }
+        .appointment-form {
+            width: 100%;
+        }
+    }
+  </style>
+</head>
+<body>
+
+<div class="appointment-container">
+  <div class="appointment-image"></div>
+  <div class="appointment-form">
+    <h2><i class="fas fa-calendar-check"></i> Book an Appointment</h2>
+
+    <form th:action="@{/appointment/submit-appointment}" method="post" th:object="${appointment}" onsubmit="return confirmAppointmentBooking()">
+
+      <div class="mb-3">
+        <label class="form-label">Patient Name</label>
+        <input type="text" class="form-control" name="patientName" th:field="*{patientName}" placeholder="Enter Your Name" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Age</label>
+        <input type="number" class="form-control" name="age" th:field="*{age}" placeholder="Enter Your Age" required >
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Gender</label>
+        <select class="form-control" name="gender" th:field="*{gender}" required>
+          <option value="">--Select Gender--</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Doctor</label>
+        <select class="form-control" name="doctor" th:field="*{doctor}" required>
+          <option value="">--Select Doctor--</option>
+          <option value="Dr.Ravi Sekhar Reddy">Dr.Ravi Sekhar Reddy (Neurologist)</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Select Date</label>
+        <input type="date" class="form-control" name="selectedDate" th:field="*{selectedDate}" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Select Time Slot</label>
+        <select class="form-control" name="selectedTime" th:field="*{selectedTime}" required>
+          <option value="">--Select a Time Slot--</option>
+          <option value="09:00">09:00 AM</option>
+          <option value="10:00">10:00 AM</option>
+          <option value="11:00">11:00 AM</option>
+          <option value="14:00">02:00 PM</option>
+          <option value="15:00">03:00 PM</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> <b>Book Appointment</b></button>
+      <a href="/patient/patienthome" class="btn btn-primary btn-back"><i class="fas fa-home"></i> <b>Back to Home</b></a>
+    </form>
+  </div>
+</div>
+<script>
+  function confirmAppointmentBooking() {
+      alert("Appointment Booked Successfully!");
+      window.location.href = "/patient/patienthome";  // Redirect to home page after confirmation
+
+  }
+</script>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

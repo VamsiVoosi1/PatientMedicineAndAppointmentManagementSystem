@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Medicine and Appointment Management System</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abyssinica SIL">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon">
+
+
+  <style>
+    body {
+        background: url(/home.png) no-repeat center center/cover;
+        font-family: 'Arial', sans-serif;
+        color: white;
+        max-height: 140vh;
+    }
+
+    .overlay {
+        background: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .header {
+        background-color: rgba(0, 123, 255, 0.9);
+        color: white;
+        padding: 20px;
+        text-align: left;
+        font-size: 1.5rem;
+        font-weight: bold;
+        position: relative;
+        z-index: 2;
+    }
+
+    .nav-link {
+        color: white !important;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .nav-link:hover {
+        color: #c5edcf !important;
+        transform: scale(1.1);
+    }
+
+    .hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 10px #050df7, 0 0 20px #050df7, 0 0 30px #050df7;
+            animation: fadeIn 1.5s ease-in-out;
+            color: white;
+            font-family: "Sofia", sans-serif;
+
+        }
+
+        .container {
+            margin-top: 5px;
+            position: relative;
+            z-index: 2;
+        }
+        img{
+          height: 60px;
+          width: 60px;
+        }
+.navbar {
+    background: linear-gradient(45deg, #ffffff, #f8f9fa); /* Use any option above */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+  </style>
+</head>
+<body>
+
+<!-- Overlay for background image -->
+<div class="overlay"></div>
+
+<!-- Header -->
+<div class="header" style="color:white; font-family:Audiowide, sans-serif; font-size: 30px; display: flex; align-items: center; justify-content: space-between; padding: 10px;">
+  <div style="display: flex; align-items: center;">
+    <img src="/hospital.png" alt="Hospital Logo" style="height: 50px; margin-right: 10px;">
+    <span>Patient Medicine and Appointment Management System</span>
+  </div>
+  <span style="color:white; font-family:Sofia; font-size: 25px;">👤Welcome Doctor!</span>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <div class="container" style="font-weight:bold;color:white;font-family:Abyssinica SIL,sans-serif;font-size: 20px">
+    <button class="navbar-toggler" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" th:href="@{/appointment/viewdoctorappointments}">📅 View Appointments</a></li>
+        <li class="nav-item"><a class="nav-link" th:href="@{/doctor/logout}">🔑 Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="hero font-effect-neon">
+  "Revolutionizing patient management – One click, endless possibilities!"
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
