@@ -53,7 +53,7 @@ public class DoctorController {
             return "doctorregistration";
         }
         doctorService.saveDoctor(doctor);
-        return "redirect:/patient/patientlogin"; // Redirect to a success page
+        return "redirect:/doctor/doctorlogin"; // Redirect to a success page
     }
     @PostMapping("/loginWithEmailAndPassword")
     public String login(

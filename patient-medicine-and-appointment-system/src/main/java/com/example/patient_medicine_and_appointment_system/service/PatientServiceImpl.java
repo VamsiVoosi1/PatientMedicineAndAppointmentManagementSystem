@@ -28,7 +28,6 @@ public class PatientServiceImpl implements PatientService{
         //Password Encryption Before saving
         patient.setPassword(passwordEncoder.encode(patientDto.getPassword()));
         Patient savedPatient=patientRepository.save(patient);
-
         return modelMapper.map(savedPatient,PatientDto.class);
     }
 
@@ -36,7 +35,6 @@ public class PatientServiceImpl implements PatientService{
     public PatientDto findByEmail(String email) {
         Optional<Patient> optionalPatient=patientRepository.findByEmail(email);
         return optionalPatient.map(patient -> modelMapper.map(patient,PatientDto.class)).orElse(null);
-
     }
 
     @Override
